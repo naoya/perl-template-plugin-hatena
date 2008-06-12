@@ -14,9 +14,14 @@ sub init {
 
 sub filter {
     my ($self, $text, $args, $config) = @_;
-    my $parser = Text::Hatena->new(%$config);
-    $parser->parse($text);
-    return $parser->html;
+
+    if (Text::Hatena->VERSION >= 0.20) {
+        Text::Hatena->parse($text)
+    } else {
+        my $parser = Text::Hatena->new(%$config);
+        $parser->parse($text);
+        return $parser->html;
+    }
 }
 
 1;
@@ -30,7 +35,7 @@ Template::Plugin::Hatena - TT plugin for Text::Hatena
 =head1 SYNOPSIS
 
   [% USE Hatena -%]
-  [% FILTER hatena permalink => 'http://www.example.com/entry/123' -%]
+  [% FILTER hatena -%]
   * Hello, World!
 
   - Good Morning
@@ -57,4 +62,3 @@ Naoya Ito E<lt>naoya@bloghackers.netE<gt>
 This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 
 =cut
-

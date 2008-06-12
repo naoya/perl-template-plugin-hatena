@@ -6,7 +6,7 @@ my $tt = Template->new;
 
 $tt->process(\<<EOF, {}, \my $out) or die $tt->error;
 [% USE Hatena -%]
-[% FILTER hatena sectionanchor => '\@' -%]
+[% FILTER hatena -%]
 * Hello
 
 -a
@@ -17,4 +17,4 @@ $tt->process(\<<EOF, {}, \my $out) or die $tt->error;
 [%- END %]
 EOF
 
-like $out, qr!<h3>.*?\<span class="sanchor">@</span>.*?Hello</h3>.*?<ul>.*?</ul>!s, $out;
+like $out, qr!<h3>.*?Hello</h3>.*?<ul>.*?</ul>!s;

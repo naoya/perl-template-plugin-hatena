@@ -3,7 +3,7 @@ NAME
 
 SYNOPSIS
       [% USE Hatena -%]
-      [% FILTER hatena permalink => 'http://www.example.com/entry/123' -%]
+      [% FILTER hatena -%]
       * Hello, World!
 
       - Good Morning
