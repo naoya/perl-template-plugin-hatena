@@ -3,7 +3,7 @@ use strict;
 use base qw (Template::Plugin::Filter);
 use Text::Hatena;
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 sub init {
     my $self = shift;
